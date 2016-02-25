@@ -6,10 +6,12 @@ package uk.ac.york.modules.testing;
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -42,20 +44,31 @@ public class EquationsView extends JApplet {
 		
 		Equation e = null;
 		
-		if (args.length!=1) 
-			return;
+		String [] Commands  = {"FirstOrder", "Sinus" , "Fraction" , "SecondOrder", "Help", "help"};
 		
-		if (args[0].equals("FirstOrder")) {
+		List<String> Command_list = new ArrayList<>(Arrays.asList(Commands));
+		
+		if (args.length != 1){
+			throw new IllegalArgumentException("Incorrect Number of arguments");
+		} 
+		
+		
+		if (!Command_list.contains(args[0])){
+			throw new IllegalArgumentException("Not defined command");
+		}
+		
+		 
+		if (args[0].equals(Commands[0])) { //FirstOrder 
 			e = Equation.createEquationFromType(FirstOrderEquation.class);
-		} else if(args[0].equals("Sinus")) {
+		} else if(args[0].equals(Commands[1])) { //Sinus 
 			e = Equation.createEquationFromType(SinusBasedEquation.class);
-		} else if(args[0].equals("Fraction")) {
+		} else if(args[0].equals(Commands[2])) {  // Fraction
 			e = Equation.createEquationFromType(FractionEquation.class);			
-		} else if(args[0].equals("SecondOrder")) {
+		} else if(args[0].equals(Commands[3])) { // Second order
 			System.out.println("SecondOrder Equations not yet implemented");
 			//e = Equation.createEquationFromType(FractionEquation.class);
 		} else {
-			System.out.println("Options are: \n\tFirstOrder: f(x) = ax+b\n\tSecond Order: f(x) =ax^2+bx+c\n\tSinus: f(x) =a*(sin(b+x)^c)+d\n\tFraction: f(x) =a/(x+b)");
+			System.out.println("Options are: \n\tFirstOrder: f(x) = ax+b\n\tSecond Order: f(x) = ax^2+bx+c\n\tSinus: f(x) =a*(sin(b+x)^c)+d\n\tFraction: f(x) =a/(x+b)");
 		}
 
 		if (e != null) {
