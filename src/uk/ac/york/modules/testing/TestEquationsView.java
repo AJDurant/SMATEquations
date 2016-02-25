@@ -44,11 +44,12 @@ public class TestEquationsView{
 	@Test
 	public final void testMainWithTwoArguments() {
 		String []arguments = {"Help", "AnotherArgument"};
-		try{
-			EquationsView.main(arguments);
-		}catch(IllegalArgumentException e){	
-			fail();
-		}
+		
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("Incorrect Number of arguments");
+		
+		EquationsView.main(arguments);
+		
 	}
 	
 	@Test
@@ -89,6 +90,16 @@ public class TestEquationsView{
 		} catch (Exception e) {
 			fail();
 		}
+	}
+	
+	@Test
+	public final void testMainNotAnArgument() {
+		String []arguments = {"NotAnArgument"};
+		
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("Not defined command");
+		
+		EquationsView.main(arguments);
 	}
 	
 	@Test
