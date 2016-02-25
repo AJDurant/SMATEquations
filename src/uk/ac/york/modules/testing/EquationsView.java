@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.awt.GraphicsEnvironment;
 import java.awt.HeadlessException;
 
 
@@ -29,7 +30,9 @@ public class EquationsView extends JApplet {
 	 * @throws HeadlessException
 	 */
 	public EquationsView() throws HeadlessException {
-		// TODO Auto-generated constructor stub
+		if (GraphicsEnvironment.isHeadless()) {
+			throw new HeadlessException("Must be run with graphical interface");
+		}
 	}
 
 	/**

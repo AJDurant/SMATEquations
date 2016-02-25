@@ -5,11 +5,15 @@ package uk.ac.york.modules.testing;
 
 import static org.junit.Assert.*;
 
+import java.awt.HeadlessException;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * This class provides some tests for the Equations program.
@@ -20,6 +24,9 @@ import org.junit.Test;
  */
 public class TestEquationsView{
 
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+	
 	/**
 	 * Test method for {@link uk.ac.york.modules.testing.EquationsView#main(java.lang.String[])}.
 	 */
@@ -39,10 +46,55 @@ public class TestEquationsView{
 		String []arguments = {"Help", "AnotherArgument"};
 		try{
 			EquationsView.main(arguments);
+		}catch(IllegalArgumentException e){	
 			fail();
-			return;
-		}catch(IllegalArgumentException e){			
 		}
+	}
+	
+	@Test
+	public final void testMainFirstOrder() {
+		String []arguments = {"FirstOrder"};
+		try {
+			EquationsView.main(arguments);
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public final void testMainFraction() {
+		String []arguments = {"Fraction"};
+		try {
+			EquationsView.main(arguments);
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public final void testMainSinus() {
+		String []arguments = {"Sinus"};
+		try {
+			EquationsView.main(arguments);
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public final void testMainSecondOrder() {
+		String []arguments = {"SecondOrder"};
+		try {
+			EquationsView.main(arguments);
+		} catch (Exception e) {
+			fail();
+		}
+	}
+	
+	@Test
+	public final void testHeadless() throws HeadlessException {		
+		thrown.expect(HeadlessException.class);
+		EquationsView view = new EquationsView();
 	}
 	
 	/**
