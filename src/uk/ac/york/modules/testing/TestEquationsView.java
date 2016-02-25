@@ -18,7 +18,7 @@ import org.junit.Test;
  * @date Feb 26, 2013
  *
  */
-public class TestEquation{
+public class TestEquationsView{
 
 	/**
 	 * Test method for {@link uk.ac.york.modules.testing.EquationsView#main(java.lang.String[])}.
