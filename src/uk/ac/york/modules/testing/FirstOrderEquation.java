@@ -31,7 +31,7 @@ public class FirstOrderEquation extends Equation {
 	 */
 	@Override
 	public String toString() {
-		return a+"x+"+b;
+		return a+"x"+(b<0?"-":"+")+Math.abs(b);
 	}
 
 	/* (non-Javadoc)
