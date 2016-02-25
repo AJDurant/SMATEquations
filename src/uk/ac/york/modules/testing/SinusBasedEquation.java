@@ -12,22 +12,22 @@ package uk.ac.york.modules.testing;
  */
 public class SinusBasedEquation extends Equation {
 	/**
-	 * a in a*sin(b*x)^c+d.
+	 * a in a*sin(b*x^c)+d.
 	 */
 	double a;
 	
 	/**
-	 * b in a*sin(b*x)^c+d.
+	 * b in a*sin(b*x^c)+d.
 	 */
 	double b;
 
 	/**
-	 * c in a*sin(b*x)^c+d.
+	 * c in a*sin(b*x^c)+d.
 	 */
 	double c;
 
 	/**
-	 * d in a*sin(b*x)^c+d.
+	 * d in a*sin(b*x^c)+d.
 	 */
 	double d;
 
@@ -43,10 +43,10 @@ public class SinusBasedEquation extends Equation {
 	}
 	@Override
 	public double of(double x) {
-		return a*Math.pow(Math.sin(b*x),c)+d;
+		return a * Math.sin(b * Math.pow(x,c)) + d;
 	}
 	@Override
 	public String toString() {
-		return a+"(sin("+b+"x)^"+c+")+"+d;
+		return a+"(sin("+b+"x^"+c+"))+"+d;
 	}
 }
