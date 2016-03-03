@@ -2,7 +2,6 @@
  * 
  */
 package uk.ac.york.modules.testing;
-
 import javax.swing.JApplet;
 import javax.swing.JFrame;
 
@@ -68,7 +67,7 @@ public class EquationsView extends JApplet {
 			e = Equation.createEquationFromType(SecondOrderEquation.class);
 		} else {
 			System.out.println("Options are: \n\tFirstOrder: f(x) = ax+b\n\tSecond Order: f(x) = ax^2+bx+c\n\tSinus: f(x) = a*(sin(b+x^c))+d\n\tFraction: f(x) = a/(x+b)");
-		}
+                }
 
 		if (e != null) {
 			JFrame f = new JFrame("Equation");
@@ -76,6 +75,7 @@ public class EquationsView extends JApplet {
 			EquationPanel p = new EquationPanel(e);
 			f.add(p);
 			f.setVisible(true);
+                        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	}
 	

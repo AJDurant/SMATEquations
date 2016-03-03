@@ -45,7 +45,7 @@ public abstract class Equation {
 		    catch(NumberFormatException nfe)
 		    { 
 		       nfe.printStackTrace();
-		       System.err.println("Input value not allowed");
+		       System.err.println("Input value " + s + " not allowed");
 		       System.exit(1);
 		    }
 			
@@ -59,6 +59,8 @@ public abstract class Equation {
 		    } catch (Exception e) {
 			  e.printStackTrace();
 			  JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
+                          String[] args = {"help"};
+                          EquationsView.main(args);
 		    }
 		// if there was no exception
       		return null;

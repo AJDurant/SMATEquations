@@ -12,7 +12,7 @@ import javax.swing.JPopupMenu;
 
 //@SuppressWarnings({ "serial", "unchecked" })
 public class EquationPanel extends JPanel {
-
+    
 	
 	/**
 	 * The equation.
