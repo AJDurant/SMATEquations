@@ -29,7 +29,7 @@ public class FractionEquation extends Equation {
 		this.b = b;
                 if (b<=0)
                 {
-                	IllegalArgumentException e = new IllegalArgumentException();
+                	IllegalArgumentException e = new IllegalArgumentException("b<=0");
                     throw e;
                 }
 	

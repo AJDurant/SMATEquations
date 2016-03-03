@@ -58,7 +58,7 @@ public abstract class Equation {
 			  return (Equation)c.newInstance(arguments);
 		    } catch (Exception e) {
 			  e.printStackTrace();
-			  JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
+			  JOptionPane.showMessageDialog(null, "Value not appropriate: "+e.getCause().getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                           String[] args = {"help"};
                           EquationsView.main(args);
 		    }

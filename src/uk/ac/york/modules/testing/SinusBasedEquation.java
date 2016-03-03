@@ -58,7 +58,7 @@ public class SinusBasedEquation extends Equation {
 	}
 	@Override
 	public double of(double x) {
-		return a * Math.sin(b * Math.pow(x,c)) + d;
+		return a * Math.sin(Math.pow(b*x,c)) + d;
 	}
 	@Override
 	public String toString() {
