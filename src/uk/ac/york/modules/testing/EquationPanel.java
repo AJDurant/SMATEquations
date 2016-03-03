@@ -10,14 +10,19 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-@SuppressWarnings({ "serial", "unchecked" })
+//@SuppressWarnings({ "serial", "unchecked" })
 public class EquationPanel extends JPanel {
-
+    
 	
 	/**
 	 * The equation.
 	 */
-	public Equation equation;
+	private Equation equation;
+	
+	/**
+	 * The list of points.
+	 */
+	private ArrayList<Double> [] series = new ArrayList[2];
 	
 	
 	/**
@@ -34,10 +39,7 @@ public class EquationPanel extends JPanel {
 
 		this.populate(10);
 	}
-	/**
-	 * The list of points.
-	 */
-	public ArrayList<Double> []series = new ArrayList[2];
+	
 
 	/**
 	 * The size of the border on the left part.
@@ -78,7 +80,7 @@ public class EquationPanel extends JPanel {
 	/**
 	 * Popup menu on this graph.
 	 */
-	JPopupMenu popup=null;
+	JPopupMenu popup = null;
 
 	
 	/**

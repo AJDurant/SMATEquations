@@ -24,9 +24,14 @@ public class FractionEquation extends Equation {
 	/**
 	 * 
 	 */
-	public FractionEquation(double a, double b) {
+	public FractionEquation(double a, double b) throws Exception {
 		this.a = a;
 		this.b = b;
+                if (b<=0)
+                {
+                    Exception e = new Exception();
+                    throw e;
+                }
 	
 	}
 	@Override

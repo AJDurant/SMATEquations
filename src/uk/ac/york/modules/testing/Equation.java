@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JOptionPane;
 
+
 /**
  * This class represents an equation.
  * Note that there should be only one constructor for a given equation type with only double arguments.
@@ -26,31 +27,48 @@ public abstract class Equation {
 	 * @param equationType the class of the equation 
 	 * @return the Equation
 	 */
-	@SuppressWarnings("unchecked")
+	//@SuppressWarnings("unchecked")
 	public static Equation createEquationFromType(Class equationType) {
 		Constructor c =  equationType.getConstructors()[0];
 		int n_arguments = c.getParameterTypes().length;
 		Object[] arguments = new Double [n_arguments];
 		for (int i=0; i<n_arguments;i++) {
 			//ask for values
-			String s = JOptionPane.showInputDialog(null, ((char)(((byte)'a')+i))+" =", 
-					"Enter argument", JOptionPane.QUESTION_MESSAGE);
-			arguments[i] = Double.parseDouble(s);
-		}
-		try {
-			// we return the new instance
-			return (Equation)c.newInstance(arguments);
-		} catch (Exception e) {
-			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
-		}
+			String s = JOptionPane.showInputDialog(null, 
+					                              ((char)(((byte)'a') + i)) + " = ",  
+					                              "Enter argument", JOptionPane.QUESTION_MESSAGE);
+	
+			try
+		    {
+		      double d = Double.parseDouble(s);
+		    }
+		    catch(NumberFormatException nfe)
+		    { 
+		       nfe.printStackTrace();
+		       System.err.println("Input value " + s + " not allowed");
+		       System.exit(1);
+		    }
+			
+			arguments[i] =	Double.parseDouble(s);
+		 }
+		
+		
+		    try {
+			  // we return the new instance
+			  return (Equation)c.newInstance(arguments);
+		    } catch (Exception e) {
+			  e.printStackTrace();
+			  JOptionPane.showMessageDialog(null, "alert", "alert", JOptionPane.ERROR_MESSAGE);
+                          String[] args = {"help"};
+                          EquationsView.main(args);
+		    }
 		// if there was no exception
-		return null;
+      		return null;
 	}
 	
 	@Override
 	public String toString() {
-		return "A "+this.getClass().getName();
+		return "A "+ this.getClass().getName();
 	}
 	
 	/**
