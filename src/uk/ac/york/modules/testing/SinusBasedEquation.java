@@ -34,12 +34,12 @@ public class SinusBasedEquation extends Equation {
 	/**
 	 * Constructor for sinus-based equations.
 	 */
-	public SinusBasedEquation(double a, double b, double c, double d) throws Exception {
+	public SinusBasedEquation(double a, double b, double c, double d) throws IllegalArgumentException {
 		this.a = a;
 		this.b = b;
 		this.c = c;
 		this.d = d;
-                Exception e = new Exception();
+		IllegalArgumentException e = new IllegalArgumentException();
                 
                 //Check border cases
                 if (
