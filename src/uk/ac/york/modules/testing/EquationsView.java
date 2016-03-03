@@ -42,32 +42,38 @@ public class EquationsView extends JApplet {
 	public static void main(String[] args) {
 		
 		Equation e = null;
-		
+		String helpString = "Options are: \n\tFirstOrder: f(x) = ax+b\n\tSecond Order: f(x) = ax^2+bx+c\n\tSinus: f(x) = a*(sin(bx^c))+d\n\tFraction: f(x) = a/(x+b)";
 		String [] Commands  = {"FirstOrder", "Sinus" , "Fraction" , "SecondOrder", "Help", "help"};
 		
 		List<String> Command_list = new ArrayList<>(Arrays.asList(Commands));
 		
 		if (args.length != 1){
-			throw new IllegalArgumentException("Incorrect Number of arguments");
+			System.err.println("Incorrect Number of arguments");
+			System.out.println("Expected arguments are: ");
+			System.out.println(helpString);
+			System.exit(1);
 		} 
 		
 		
 		if (!Command_list.contains(args[0])){
-			throw new IllegalArgumentException("Not defined command");
+		    System.err.println("Not defined command");
+			System.out.println("Expected arguments are: ");
+			System.out.println(helpString);
+			System.exit(1);
 		}
 		
 		 
-		if (args[0].equals(Commands[0])) { //FirstOrder 
+		if (args[0].equalsIgnoreCase(Commands[0])) { //FirstOrder 
 			e = Equation.createEquationFromType(FirstOrderEquation.class);
-		} else if(args[0].equals(Commands[1])) { //Sinus 
+		} else if(args[0].equalsIgnoreCase(Commands[1])) { //Sinus 
 			e = Equation.createEquationFromType(SinusBasedEquation.class);
-		} else if(args[0].equals(Commands[2])) {  // Fraction
+		} else if(args[0].equalsIgnoreCase(Commands[2])) {  // Fraction
 			e = Equation.createEquationFromType(FractionEquation.class);			
-		} else if(args[0].equals(Commands[3])) { // Second order
+		} else if(args[0].equalsIgnoreCase(Commands[3])) { // Second order
 			e = Equation.createEquationFromType(SecondOrderEquation.class);
 		} else {
-			System.out.println("Options are: \n\tFirstOrder: f(x) = ax+b\n\tSecond Order: f(x) = ax^2+bx+c\n\tSinus: f(x) = a*(sin(bx^c))+d\n\tFraction: f(x) = a/(x+b)");
-                }
+			System.out.println(helpString);
+		}
 
 		if (e != null) {
 			JFrame f = new JFrame("Equation");
@@ -75,7 +81,7 @@ public class EquationsView extends JApplet {
 			EquationPanel p = new EquationPanel(e);
 			f.add(p);
 			f.setVisible(true);
-                        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 	}
 	

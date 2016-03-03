@@ -48,12 +48,12 @@ public class SinusBasedEquation extends Equation {
                         || (b == 1 && c<0)
                     )
                 {
-                    throw e;
+                    throw new IllegalArgumentException("Value not allowed");
                 }
                 
                 //Check that computation is actually feasible to compute.
                 //Power of 30 should be high enough to stump most graphing softwares.
-                if (c>30) { throw e; }
+                if (c>30) { throw new IllegalArgumentException("Power to high, only accept powers <= 30"); }
 	
 	}
 	@Override
@@ -62,6 +62,6 @@ public class SinusBasedEquation extends Equation {
 	}
 	@Override
 	public String toString() {
-		return a+"(sin("+b+"x^"+c+"))+"+d;
+		return a+"(sin("+b+"x^"+c+"))"+(d>0?"+":"")+d;
 	}
 }
